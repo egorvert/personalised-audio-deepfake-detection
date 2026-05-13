@@ -157,33 +157,52 @@ still need CPU fallback.
 
 ## Credits
 
-This project uses [AASIST](https://github.com/clovaai/aasist) by Jung et al.,
-included verbatim under `aasist/` with its original MIT licence and NOTICE
-file. The official release accompanies:
+The AASIST anti-spoofing stream is the official implementation, included
+verbatim under `aasist/` with its original MIT licence and NOTICE file
+([github.com/clovaai/aasist](https://github.com/clovaai/aasist)):
 
-> Jung, J., Heo, H.-S., Tak, H., Shim, H.-j., Chung, J. S., Lee, B.-J.,
-> Yu, H.-J. and Evans, N. (2021). *AASIST: Audio Anti-Spoofing using Integrated
+> Jung, J., Heo, H.-S., Tak, H., Shim, H., Chung, J.S., Lee, B.-J., Yu, H.-J.
+> and Evans, N. (2021). *AASIST: Audio Anti-Spoofing using Integrated
 > Spectro-Temporal Graph Attention Networks*. arXiv:2110.01200.
 
 The WavLM stream uses Microsoft's `wavlm-base-plus` checkpoint via
 [transformers](https://github.com/huggingface/transformers):
 
 > Chen, S. et al. (2022). *WavLM: Large-Scale Self-Supervised Pre-Training for
-> Full Stack Speech Processing*. IEEE J-STSP.
+> Full Stack Speech Processing*. IEEE Journal of Selected Topics in Signal
+> Processing, 16(6), pp.1505–1518.
+
+The attentive statistics pooling layer follows:
+
+> Okabe, K., Koshinaka, T. and Shinoda, K. (2018). *Attentive Statistics
+> Pooling for Deep Speaker Embedding*. INTERSPEECH 2018, pp.2252–2256.
+
+The FiLM speaker-conditioning block follows:
+
+> Perez, E., Strub, F., de Vries, H., Dumoulin, V. and Courville, A. (2017).
+> *FiLM: Visual Reasoning with a General Conditioning Layer*.
+> arXiv:1709.07871.
 
 Training and evaluation use the ASVspoof 2019 LA dataset:
 
-> Wang, X. et al. (2020). *ASVspoof 2019: A Large-Scale Public Database of
-> Synthesized, Converted and Replayed Speech*. Computer Speech & Language,
-> 64, 101114.
+> Wang, X., Yamagishi, J., Todisco, M., Delgado, H., Nautsch, A., Evans, N.
+> et al. (2020). *ASVspoof 2019: A Large-Scale Public Database of Synthesized,
+> Converted and Replayed Speech*. arXiv:1911.01601.
 
 Cross-dataset evaluations use:
 
-> Müller, N. M. et al. (2022). *Does Audio Deepfake Detection Generalize?*
-> INTERSPEECH 2022, pp. 2783-2787. (In-the-Wild)
+> Müller, N. M., Czempin, P., Dieckmann, F., Froghyar, A. and Böttinger, K.
+> (2026). *Does Audio Deepfake Detection Generalize?* arXiv:2203.16263.
+> (In-the-Wild)
 >
 > Frank, J. and Schönherr, L. (2021). *WaveFake: A Data Set to Facilitate
-> Audio Deepfake Detection*. NeurIPS Datasets and Benchmarks.
+> Audio Deepfake Detection*. arXiv:2111.02813.
+
+The deepfake clips for the user study were synthesised with F5-TTS:
+
+> Chen, Y., Niu, Z., Ma, Z., Deng, K., Wang, C., Zhao, J., Yu, K. and
+> Chen, X. (2025). *F5-TTS: A Fairytaler that Fakes Fluent and Faithful
+> Speech with Flow Matching*. arXiv:2410.06885.
 
 ## Licence
 
