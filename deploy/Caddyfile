@@ -1,0 +1,32 @@
+# Reverse proxy for the study webapp. Listens on :4000 (plain HTTP — Tailscale
+# Funnel terminates TLS upstream).
+#
+# Routes:
+#   /api/vdetect/* -> 127.0.0.1:8000 (FastAPI, prefix stripped)
+#   /storage/*     -> 127.0.0.1:54321 (Supabase storage, signed URLs only)
+#   everything else-> 127.0.0.1:3000 (Next.js)
+#
+# We force X-Forwarded-Proto: https on the Next.js route because the Funnel
+# hits Caddy over plain HTTP and Next.js code that reconstructs origin from
+# headers needs the public scheme.
+
+:4000 {
+	encode gzip
+
+	handle /api/vdetect/* {
+		uri strip_prefix /api/vdetect
+		reverse_proxy 127.0.0.1:8000
+	}
+
+	# Phase 2 clips are served via time-limited signed URLs from local Supabase
+	# storage. The signed JWT is the only authz; unsigned reads return 401/403.
+	handle /storage/* {
+		reverse_proxy 127.0.0.1:54321
+	}
+
+	handle {
+		reverse_proxy 127.0.0.1:3000 {
+			header_up X-Forwarded-Proto https
+		}
+	}
+}

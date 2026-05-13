@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LaunchAgent that brings the Supabase stack up at login via scripts/boot_stack.sh.
+  KeepAlive.SuccessfulExit=false makes launchd retry only on non-zero exit, so
+  a clean run does NOT loop.
+
+  Install:
+    cp deploy/com.vdetect.supabase.plist ~/Library/LaunchAgents/
+    launchctl load   ~/Library/LaunchAgents/com.vdetect.supabase.plist
+    launchctl kickstart -k gui/$(id -u)/com.vdetect.supabase   # re-run now
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.vdetect.supabase</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>-l</string>
+		<string>-c</string>
+		<string>/Users/egorvert/Developer/personalised-audio-deepfake-detection/scripts/boot_stack.sh</string>
+	</array>
+
+	<key>RunAtLoad</key>
+	<true/>
+
+	<key>KeepAlive</key>
+	<dict>
+		<key>SuccessfulExit</key>
+		<false/>
+	</dict>
+
+	<key>StandardOutPath</key>
+	<string>/Users/egorvert/Library/Logs/vdetect-boot.log</string>
+
+	<key>StandardErrorPath</key>
+	<string>/Users/egorvert/Library/Logs/vdetect-boot.log</string>
+
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+</dict>
+</plist>

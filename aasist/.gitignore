@@ -1,0 +1,23 @@
+# Vendored clovaai/AASIST repo. Upstream .gitignore excluded source
+# directories (`config/`, `models/`) that we need tracked here for our
+# two-stream detector to import. Scope narrowed to just build artifacts
+# and large binary model weights.
+
+# Large pretrained weight binaries — supplied separately at deploy time
+models/weights/
+exp_result/
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+
+# Data + large dirs
+LA/
+depreciated/
+
+# OS
+.DS_Store

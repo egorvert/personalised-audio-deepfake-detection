@@ -1,0 +1,9 @@
+# F5-TTS dependencies — kept OUT of root requirements.txt so vdetect-api and
+# the Next.js server do not pull the TTS stack. Installed separately via
+# scripts/install_f5tts.sh on the researcher machine only.
+#
+# Runtime note: callers must set PYTORCH_ENABLE_MPS_FALLBACK=1 before invoking
+# F5-TTS on Apple Silicon (some ops are not yet implemented on MPS).
+
+f5-tts==1.1.7
+huggingface_hub[cli]==0.36.0

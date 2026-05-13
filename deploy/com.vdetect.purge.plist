@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LaunchAgent that runs the retention purge daily at 03:00 local time.
+  Safe to enable from day one: purge_expired_data.py is a no-op until the
+  researcher runs scripts/close_study.py to set the study_lifecycle stamps.
+
+  Install:
+    cp deploy/com.vdetect.purge.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.vdetect.purge.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.vdetect.purge</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>-l</string>
+		<string>-c</string>
+		<string>cd /Users/egorvert/Developer/personalised-audio-deepfake-detection &amp;&amp; .venv/bin/python scripts/purge_expired_data.py</string>
+	</array>
+
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>3</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+	</dict>
+
+	<key>StandardOutPath</key>
+	<string>/Users/egorvert/Library/Logs/vdetect-purge.log</string>
+
+	<key>StandardErrorPath</key>
+	<string>/Users/egorvert/Library/Logs/vdetect-purge.log</string>
+
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+</dict>
+</plist>
