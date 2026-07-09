@@ -25,3 +25,8 @@ SOFTWARE.
 This project includes the AASIST anti-spoofing code under `aasist/`,
 copyright (c) 2021-present NAVER Corp., distributed under the MIT License.
 See `aasist/LICENSE` and `aasist/NOTICE` for the full notices.
+
+The dissertation under `docs/` is not covered by the MIT License above. It is
+copyright (c) 2026 Egor Vert and is licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0). You may share and reference
+it with attribution. See https://creativecommons.org/licenses/by/4.0/.

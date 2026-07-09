@@ -8,6 +8,10 @@ The detector fuses a WavLM-based stream and the AASIST anti-spoofing model and
 adds a FiLM block that conditions the fused embedding on a small speaker
 prototype built from a few seconds of bonafide audio.
 
+The full dissertation — motivation, architecture, evaluation, and the user study —
+is in [`docs/personalised-audio-deepfake-detection-dissertation.pdf`](docs/personalised-audio-deepfake-detection-dissertation.pdf)
+(Egor Vert, BSc Computer Science, Queen Mary University of London, 2026).
+
 ## Layout
 
 ```
@@ -209,3 +213,7 @@ The deepfake clips for the user study were synthesised with F5-TTS:
 The original code in this repository is MIT-licensed. The vendored AASIST code
 under `aasist/` is © NAVER Corp. and is distributed under its own MIT licence
 (see `aasist/LICENSE` and `aasist/NOTICE`).
+
+The dissertation under `docs/` is © Egor Vert 2026 and is licensed separately
+under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/):
+you are free to share and reference it with attribution.
